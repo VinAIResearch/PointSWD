@@ -53,7 +53,8 @@ The code is based on Pytorch. It has been tested with Python 3.6.9, PyTorch 1.2.
 Other dependencies:
 * Tensorboard 2.3.0
 * Open3d 0.7.0
-* Tqdm 4.46.0 <br>
+* Tqdm 4.46.0 
+
 To compile CUDA kernel for CD/EMD loss:
 ```
 cd metrics_from_point_flow/pytorch_structural_losses/
@@ -62,7 +63,8 @@ make
 ```
 ## Experiments
 ### Autoencoder
-To train an autoencoder: in the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run:
+To train an autoencoder: <br> 
+In the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run:
 ```
 bash train.sh
 ```
@@ -71,12 +73,12 @@ To test reconstruction:
 bash reconstruction/test.sh
 ```
 ### Semi-supervised classification
-To generate latent codes of the training set of ModelNet40 and save them into a file:
+To generate latent codes of the training set of ModelNet40 and save them into a file: <br>
 In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `train`, and run:
 ```
 bash classification/preprocess.sh
 ```
-To generate latent codes of the test set of ModelNet40 and save them into a file:
+To generate latent codes of the test set of ModelNet40 and save them into a file: <br>
 In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `test`, and run:
 ```
 bash classification/preprocess.sh
@@ -96,7 +98,7 @@ bash registration/register.sh
 To evaluate log files, follow the instruction in the `Evaluation` section on this [page](https://3dmatch.cs.princeton.edu/#geometric-registration-benchmark).
 
 ### Generation
-To generate latent codes of train/test sets of ShapeNet Chair and save them into a file:
+To generate latent codes of train/test sets of ShapeNet Chair and save them into a file: <br>
 In the file `generation/preprocess_config.json`, change `root` and `save_folder` to be `train` (or `test`), and run:
 ```
 bash generation/preprocess.sh
