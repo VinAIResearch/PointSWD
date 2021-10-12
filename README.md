@@ -53,7 +53,7 @@ The code is based on Pytorch. It has been tested with Python 3.6.9, PyTorch 1.2.
 Other dependencies:
 * Tensorboard 2.3.0
 * Open3d 0.7.0
-* Tqdm 4.46.0
+* Tqdm 4.46.0 <br>
 To compile CUDA kernel for CD/EMD loss:
 ```
 cd metrics_from_point_flow/pytorch_structural_losses/
