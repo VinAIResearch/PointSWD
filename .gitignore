@@ -1,0 +1,14 @@
+__pycache__
+StructuralLosses/
+logs/
+home1/
+home2/
+hotel1/
+hotel2/
+hotel3/
+kitchen/
+lab/
+study/
+modelnet40_ply_hdf5_2048/
+shapenet_chair/
+shapenet_core55/

@@ -1,0 +1,25 @@
+{
+    "device": "cuda",
+
+    "seed": 1,
+    
+    "model_path": "model.pth",
+    "save_folder":"model",
+
+    "autoencoder":"pointnet",
+    "embedding_size": 256,
+    "input_channels": 3,
+    "output_channels": 3,
+    "num_points": 2048,
+    "normalize": true,
+    
+    "root": "dataset/",
+    
+    "num_workers": 0,
+    
+    "voxel_size": 0.1,
+    "radius": 0.15,
+    "batch_size": 256,
+    
+    "color": false
+}

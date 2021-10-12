@@ -1,0 +1,30 @@
+{
+    "save_folder": "classifier_202_148_94",
+    "hidden_sizes": "202,148,94",
+
+    "seed": 3598,
+
+    "device": "cuda",
+
+    "batch_size": 256,
+    "pin_memory": true,
+    "num_workers": 0,
+    "shuffle": true,
+
+    "input_size": 256,
+    "output_size": 40,
+    "dropout_p": 0.5,
+
+    "optimizer": "sgd",
+    "learning_rate": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.005,
+
+    "best_loss":1e10,
+    "best_epoch": -1,
+    "start_epoch": 0,
+    "num_epochs": 500,
+    "checkpoint": "",
+
+    "epoch_gap_for_save": 250
+}

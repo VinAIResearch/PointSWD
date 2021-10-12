@@ -1,0 +1,14 @@
+{
+    "save_folder": "linear_svm/",
+    "train_root": "latent_codes/model/modelnet40-train/saved_latent_vectors.npz",
+    "test_root": "latent_codes/model/modelnet40-test/saved_latent_vectors.npz",
+
+    "device": "cuda",
+
+    "batch_size": 256,
+    "pin_memory": true,
+    "num_workers": 0,
+    "shuffle": true,
+
+    "input_size": 4096
+}

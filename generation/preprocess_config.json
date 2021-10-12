@@ -1,0 +1,17 @@
+{
+    "root": "dataset/shapenet_chair/test.npz",
+    "save_folder":"shapenet_chair/test/",
+    "seed": 1,
+
+    "model_path": "model.pth",
+    "device": "cuda",
+    
+    "architecture": "pointnet",
+    "embedding_size": 256,
+    "point_channels": 3,
+    "num_points": 2048,
+    "normalize": true,
+
+    "dataset": "shapenetcore55",
+    "batch_size": 64
+}

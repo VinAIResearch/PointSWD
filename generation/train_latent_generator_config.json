@@ -1,0 +1,82 @@
+{
+    "save_folder": "latent_generator/model/chair/sinkhorn/reg_0.001/",
+
+    "device": "cuda",
+
+    "autoencoder": "pointnet_lcd",
+    "embedding_size": 256,
+    "input_channels": 3,
+    "num_points": 2048,
+    "normalize": true,
+    "ae_model_path":"model.pth",
+
+    "generator_type": "MLP1",
+    "latent_dim": 64,
+    "n_hidden": 3,
+    "hidden_size": 128,
+
+    "loss": "sinkhorn",
+    "sink_reg": 0.001,
+
+    "max_slices_origin": 100000, 
+    "init_rec_epsilon": 0.1,
+    "next_epsilon_ratio_rec": 0.1,
+
+    "max_slices_latent": 500000,
+    "init_reg_epsilon": 0.5,
+    "next_epsilon_ratio_reg": 0.1,
+
+    "init_projs": 10,
+    "step_projs": 100,
+    "loop_rate_thresh": 0.05,
+    "regularization_coef": 10.0,
+
+    "latent_num_projections": 336,
+    "origin_num_projections": 14,
+
+    "train_set": "shapenetcore55",
+    "train_root": "dataset/shapenet_chair/train.npz",
+    "phase": "train",
+
+    "cates": "chair",
+
+    "have_val_set": true,
+    "val_set": "shapenetcore55",
+    "val_root": "dataset/shapenet_chair/val.npz",
+    "val_batch_size": 338,
+
+    "optimizer": "sgd",
+    "learning_rate": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+
+    "checkpoint": "",
+
+    "batch_size": 128,
+    "num_workers": 0,
+
+    "use_scheduler": true,
+    "scheduler": "cyclic_lr",
+    "base_lr": 0.0001,
+    "max_lr": 0.002,
+
+    "evaluator":"based_on_comparing_set_pcs",
+    "eval_criteria":"jsd",
+
+    "best_eval_value": 1e10,
+    "best_epoch": -1,
+
+    "best_train_loss": 1e10,
+    "best_epoch_based_on_train_loss": -1,
+
+    "epoch_gap_for_evaluation": 1,
+
+    "start_epoch": 0,
+    "num_epochs": 50,
+
+    "epoch_gap_for_save": 25,
+
+    "empty_cache_batch": false,
+
+    "empty_cache_epoch": false
+}

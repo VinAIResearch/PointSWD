@@ -1,0 +1,31 @@
+{
+    "autoencoder": "pointnet",
+    "root": "dataset/modelnet40_ply_hdf5_2048/test/",
+    "save_folder": "latent_codes/model/modelnet40-test/",
+    
+    "device": "cuda",
+    "seed": 1,
+    "num_points": 2048,
+    "prim_caps_size": 1024,
+    "prim_vec_size": 16,
+    "latent_caps_size": 64,
+    "latent_vec_size": 64,
+
+    "embedding_size": 256,
+    "input_channels": 3,    
+    "output_channels": 3,
+    "normalize": true,
+
+    "model_path":"model.pth",
+    "dataset":"modelnet40",
+
+    "batch_size": 32,
+    "pin_memory": true,
+    "num_workers": 0,
+    "shuffle": false,
+
+    "add_noise": false,
+    "noise_adder":"random",
+    "mean_noiseadder":0.0,
+    "std_noiseadder": 0.01
+}
