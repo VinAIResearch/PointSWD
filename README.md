@@ -9,9 +9,15 @@
 
 # Point-set Distances for Learning Representations of 3D Point Clouds
 
-Learning an effective representation of 3D point clouds requires a good metric to measure the discrepancy between two 3D point sets, which is non-trivial due to their irregularity. Most of the previous works resort to using the Chamfer discrepancy or Earth Mover's distance, but those metrics are either ineffective in measuring the differences between point clouds or computationally expensive. In this paper, we conduct a systematic study with extensive experiments on distance metrics for 3D point clouds. From this study, we propose to use sliced Wasserstein distance and its variants for learning representations of 3D point clouds. In addition, we introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy. We demonstrate the efficiency of the sliced Wasserstein metric and its variants on several tasks in 3D computer vision including training a point cloud autoencoder, generative modeling, transfer learning, and point cloud registration.
+In this paper, we conduct a systematic study with extensive experiments on distance metrics for 3D point clouds. From this study, we propose to use sliced Wasserstein distance and its variants for learning representations of 3D point clouds. In addition, we introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy.
 
 <!-- <img src="./image/teaser.png" width="800"> -->
+
+| ![teaser.png](./image/teaser.png) |
+|:--:|
+| *In this example, we try to morph a sphere into a chair by optimizing two different loss functions:
+  Chamfer discrepancy (top, red) and sliced Wasserstein distance (bottom, blue).
+  The sliced Wasserstein distance only takes 1000 iterations to converge, while it takes 50000 iterations for Chamfer discrepancy.*|
 
 Details of the model architecture and experimental results can be found in [our following paper](https://arxiv.org/abs/2102.04014).
 
@@ -73,13 +79,14 @@ To test reconstruction:
 bash reconstruction/test.sh
 ```
 ### Semi-supervised classification
-To generate latent codes of the training set of ModelNet40 and save them into a file: <br>
+<!-- To generate latent codes of the training set of ModelNet40 and save them into a file: <br>
 In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `train`, and run:
 ```
 bash classification/preprocess.sh
 ```
 To generate latent codes of the test set of ModelNet40 and save them into a file: <br>
-In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `test`, and run:
+In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `test`, and run: -->
+To generate latent codes of the train/test sets of ModelNet40 and save them into files:
 ```
 bash classification/preprocess.sh
 ```
@@ -98,8 +105,8 @@ bash registration/register.sh
 To evaluate log files, follow the instruction in the `Evaluation` section on this [page](https://3dmatch.cs.princeton.edu/#geometric-registration-benchmark).
 
 ### Generation
-To generate latent codes of train/test sets of ShapeNet Chair and save them into a file: <br>
-In the file `generation/preprocess_config.json`, change `root` and `save_folder` to be `train` (or `test`), and run:
+To generate latent codes of train/test sets of ShapeNet Chair and save them into a file:
+<!-- In the file `generation/preprocess_config.json`, change `root` and `save_folder` to be `train` (or `test`), and run: -->
 ```
 bash generation/preprocess.sh
 ```
