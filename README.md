@@ -88,11 +88,9 @@ To generate latent codes of the train/test sets of ModelNet40 and save them into
 ```
 bash classification/preprocess.sh
 ```
+To get classification results:
 ```
-# Get result for PointNet, run:
 bash classification/classify_train_test.sh
-# Get result for PointCapsuleNet, run:
-bash classification/linear_svm_cls.sh
 ```
 ### Registration
 To generate transformations into log files:
@@ -103,7 +101,7 @@ bash registration/register.sh
 To evaluate log files, follow the instruction in the `Evaluation` section on this [page](https://3dmatch.cs.princeton.edu/#geometric-registration-benchmark).
 
 ### Generation
-To generate latent codes of train/test sets of ShapeNet Chair and save them into a file:
+To generate latent codes of train/test sets of ShapeNet Chair and save them into files:
 <!-- In the file `generation/preprocess_config.json`, change `root` and `save_folder` to be `train` (or `test`), and run: -->
 ```
 bash generation/preprocess.sh
