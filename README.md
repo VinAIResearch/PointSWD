@@ -9,13 +9,12 @@
 
 # Point-set Distances for Learning Representations of 3D Point Clouds
 
- We propose to use sliced Wasserstein distance (SWD) and its variants for learning representations of 3D point clouds. In addition, we also introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy.
-
-<!-- <img src="./image/teaser.png" width="800"> -->
+ <!-- We propose to use sliced Wasserstein distance (SWD) and its variants for learning representations of 3D point clouds. In addition, we also introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy. -->
+This repository contains the implementation of our [paper](https://arxiv.org/abs/2102.04014). In particular, we release code for training a point cloud autoencoder network with different point-set distances and testing the autoencoder for classification, reconstruction, registration and generation. 
 
 | ![teaser.png](./image/teaser.png) |
 |:--:|
-| *We try to morph a sphere into a chair by optimizing two different loss functions: Chamfer (top, red) and SWD (bottom, blue).*|
+| *Morph a sphere into a chair by optimizing two different loss functions: Chamfer (top, red) and SWD (bottom, blue).*|
 
 Details of the model architecture and experimental results can be found in [our following paper](https://arxiv.org/abs/2102.04014).
 
