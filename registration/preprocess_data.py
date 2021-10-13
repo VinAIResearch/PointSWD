@@ -60,7 +60,8 @@ def main():
 
     # dataloader
     # args["root"] = osp.join(args["root"], dset)
-    dataset = ThreeDMatchRawDataset(dset)
+    args["root"] = dset
+    dataset = ThreeDMatchRawDataset(args["root"])
     # preprocessor
     preprocessor = Preprocessor(autoencoder, device)
     # preprocess

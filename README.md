@@ -8,8 +8,6 @@
 
 
 # Point-set Distances for Learning Representations of 3D Point Clouds
-
- <!-- We propose to use sliced Wasserstein distance (SWD) and its variants for learning representations of 3D point clouds. In addition, we also introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy. -->
 This repository contains the implementation of our [paper](https://arxiv.org/abs/2102.04014). In particular, we release code for training a point cloud autoencoder network with different point-set distances and testing the autoencoder for classification, reconstruction, registration and generation. 
 
 | ![teaser.png](./image/teaser.png) |
@@ -108,6 +106,13 @@ bash classification/preprocess.sh
 ```
 To get classification results:
 ```
+python classification/classification_train.py --config='classification/class_train_config.json' \
+                                              --logdir="logs/"
+
+python classification/classification_test.py  --config='classification/class_test_config.json' \
+                                              --logdir="logs/"
+
+# or in short, you can run
 bash classification/classify_train_test.sh
 ```
 ### Registration
@@ -138,11 +143,29 @@ python registration/preprocess_data.py  --config='registration/preprocess_config
                                         --logdir='logs/' \
                                         --data_path='dataset/study'
 
-# Or in short, you can run
+# or in short, you can run
 bash registration/preprocess.sh
 ```
 To generate transformations into log files:
 ```
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/home1/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/home2/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/hotel1/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/hotel2/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/hotel3/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/kitchen/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/lab/'
+python registration/registration_test.py  --config='registration/registration_config.json' \
+                                          --logdir='logs/model/study/'
+
+# or in short, you can run
 bash registration/register.sh
 ```
 To evaluate log files, follow the instruction in the `Evaluation` section on this [page](https://3dmatch.cs.princeton.edu/#geometric-registration-benchmark).
@@ -164,9 +187,17 @@ bash generation/preprocess.sh
 ```
 To train the generator:
 ```
+python generation/train_latent_generator.py --seed=1 \
+                                            --logdir="logs/"
+
+# or in short, you can run
 bash generation/train_latent_generator.sh
 ```
 To test the generator:
 ```
+python generation/test_generation.py  --config='generation/test_generation_config.json' \
+                                      --logdir="logs/"
+                                      
+# or in short, you can run
 bash generation/test_generation.sh
 ```
