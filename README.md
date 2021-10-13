@@ -9,7 +9,7 @@
 
 # Point-set Distances for Learning Representations of 3D Point Clouds
 
-In this paper, we conduct a systematic study with extensive experiments on distance metrics for 3D point clouds. From this study, we propose to use sliced Wasserstein distance and its variants for learning representations of 3D point clouds. In addition, we introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy.
+ We propose to use sliced Wasserstein distance (SWD) and its variants for learning representations of 3D point clouds. In addition, we also introduce a new algorithm to estimate sliced Wasserstein distance that guarantees that the estimated value is close enough to the true one. Experiments show that the sliced Wasserstein distance and its variants allow the neural network to learn a more efficient representation compared to the Chamfer discrepancy.
 
 <!-- <img src="./image/teaser.png" width="800"> -->
 
@@ -70,10 +70,20 @@ make
 To train an autoencoder: 
 <!-- In the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run: -->
 ```
+python train.py --config="config.json" \
+                --logdir="logs/" \
+                --data_path="dataset/shapenet_core55/shapenet57448xyzonly.npz"
+
+# or in short, you can run
 bash train.sh
 ```
 To test reconstruction:
 ```
+python reconstruction/reconstruction_test.py  --config="reconstruction/config.json" \
+                                              --logdir="logs/" \
+                                              --data_path="dataset/modelnet40_ply_hdf5_2048/"
+
+# or in short, you can run
 bash reconstruction/test.sh
 ```
 ### Semi-supervised classification
@@ -86,6 +96,15 @@ To generate latent codes of the test set of ModelNet40 and save them into a file
 In the file `classification/preprocess_config.json`, change `root` and `save_folder` to be `test`, and run: -->
 To generate latent codes of the train/test sets of ModelNet40 and save them into files:
 ```
+python classification/preprocess_data.py  --config='classification/preprocess_train.json' \
+                                          --logdir="logs/" \
+                                          --data_path="dataset/modelnet40_ply_hdf5_2048/train/"
+
+python classification/preprocess_data.py  --config='classification/preprocess_test.json' \
+                                          --logdir="logs/" \
+                                          --data_path="dataset/modelnet40_ply_hdf5_2048/test/"
+
+# or in short, you can run
 bash classification/preprocess.sh
 ```
 To get classification results:
@@ -93,9 +112,38 @@ To get classification results:
 bash classification/classify_train_test.sh
 ```
 ### Registration
+To preprocess 3DMatch dataset:
+```
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/home1'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/home2'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/hotel1'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/hotel2'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/hotel3'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/kitchen'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/lab'
+python registration/preprocess_data.py  --config='registration/preprocess_config.json' \
+                                        --logdir='logs/' \
+                                        --data_path='dataset/study'
+
+# Or in short, you can run
+bash registration/preprocess.sh
+```
 To generate transformations into log files:
 ```
-bash registration/preprocess.sh
 bash registration/register.sh
 ```
 To evaluate log files, follow the instruction in the `Evaluation` section on this [page](https://3dmatch.cs.princeton.edu/#geometric-registration-benchmark).
@@ -104,6 +152,15 @@ To evaluate log files, follow the instruction in the `Evaluation` section on thi
 To generate latent codes of train/test sets of ShapeNet Chair and save them into files:
 <!-- In the file `generation/preprocess_config.json`, change `root` and `save_folder` to be `train` (or `test`), and run: -->
 ```
+python generation/preprocess.py  --config='generation/preprocess_train.json' \
+                                 --logdir="logs/" \
+                                 --data_path="dataset/shapenet_chair/train.npz"
+
+python generation/preprocess.py  --config='generation/preprocess_test.json' \
+                                 --logdir="logs/" \
+                                 --data_path="dataset/shapenet_chair/test.npz"
+
+# Or in short, you can run
 bash generation/preprocess.sh
 ```
 To train the generator:

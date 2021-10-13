@@ -22,7 +22,7 @@ from utils.utils import create_save_folder, initialize_main, load_model_for_eval
 
 
 def main():
-    args, logdir = initialize_main()
+    args, logdir, data_path = initialize_main()
 
     # set seed
     torch.manual_seed(args["seed"])
@@ -55,7 +55,7 @@ def main():
     # dataset
     if args["dataset"] == "shapenetcore55":
         dataset = ShapeNetCore55XyzOnlyDataset(
-            args["root"],
+            data_path,
             num_points=args["num_points"],
             phase="test",
         )

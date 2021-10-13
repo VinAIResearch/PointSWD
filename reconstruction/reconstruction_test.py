@@ -34,9 +34,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, help="path to config file")
     parser.add_argument("--logdir", type=str, help="folder contains weights")
+    parser.add_argument("--data_path", default="dataset/modelnet40_ply_hdf5_2048/", type=str, help="path to data")
     args = parser.parse_args()
     config = args.config
     logdir = args.logdir
+    data_path = args.data_path
     args = json.load(open(config))
 
     # set seed
@@ -86,9 +88,9 @@ def main():
 
     # dataloader
     if args["dataset_type"] == "shapenet55":
-        dset = ShapeNetCore55XyzOnlyDataset(args["root"], args["num_points"], "test")  # root is a npz file
+        dset = ShapeNetCore55XyzOnlyDataset(data_path, args["num_points"], "test")  # root is a npz file
     elif args["dataset_type"] == "modelnet40":
-        dset = ModelNet40(args["root"], num_points=args["num_points"])  # root is a folder containing h5 file
+        dset = ModelNet40(data_path, num_points=args["num_points"])  # root is a folder containing h5 file
     else:
         raise ValueError("Unknown dataset type.")
 

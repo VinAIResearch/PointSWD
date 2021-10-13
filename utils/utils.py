@@ -23,9 +23,11 @@ def initialize_main(**kwargs):
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", help="path to json config file")
     parser.add_argument("--logdir", help="folder to save results")
+    parser.add_argument("--data_path", type=str, default=None, help="path to data")
     args = parser.parse_args()
     config = args.config
     logdir = args.logdir
+    data_path = args.data_path
     print("Save results in: ", logdir)
     args = json.load(open(config))
 
@@ -48,8 +50,10 @@ def initialize_main(**kwargs):
     print("You have 5s to check the hyperparameters below.")
     print(args)
     time.sleep(5)
-
-    return args, logdir
+    if data_path==None:
+        return args, logdir
+    else:
+        return args, logdir, data_path
 
 
 def load_model_for_evaluation(model, model_path, **kwargs):

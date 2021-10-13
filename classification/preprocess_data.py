@@ -22,7 +22,7 @@ from utils import create_save_folder, initialize_main, load_model_for_evaluation
 
 
 def main():
-    args, logdir = initialize_main()
+    args, logdir, data_path = initialize_main()
 
     # set seed
     torch.manual_seed(args["seed"])
@@ -64,7 +64,7 @@ def main():
 
     # dataset
     if args["dataset"] == "modelnet40":
-        dataset = ModelNet40(args["root"])  # root is a folder containing h5 files
+        dataset = ModelNet40(data_path)  # root is a folder containing h5 files
     else:
         raise ValueError("Unknown dataset type.")
 

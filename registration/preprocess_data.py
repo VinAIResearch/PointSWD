@@ -27,13 +27,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, help="config path")
     parser.add_argument("--logdir", type=str, help="log path")
-    parser.add_argument("--dataset", type=str, help="home1  home2  hotel1  hotel2  hotel3  kitchen  lab  study")
+    parser.add_argument("--data_path", type=str, help="home1  home2  hotel1  hotel2  hotel3  kitchen  lab  study")
     args = parser.parse_args()
 
     config = args.config
     logdir = args.logdir
     print("logdir: ", logdir)
-    dset = args.dataset
+    dset = args.data_path
     args = json.load(open(config))
 
     # set seed
@@ -59,8 +59,8 @@ def main():
         autoencoder = load_model_for_evaluation(autoencoder, osp.join(logdir, args["model_path"]))
 
     # dataloader
-    args["root"] = osp.join(args["root"], dset)
-    dataset = ThreeDMatchRawDataset(args["root"])
+    # args["root"] = osp.join(args["root"], dset)
+    dataset = ThreeDMatchRawDataset(dset)
     # preprocessor
     preprocessor = Preprocessor(autoencoder, device)
     # preprocess

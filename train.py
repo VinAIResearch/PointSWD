@@ -37,9 +37,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", help="path to json config file")
     parser.add_argument("--logdir", help="path to the log directory")
+    parser.add_argument("--data_path", help="path to data")
     args = parser.parse_args()
     config = args.config
     logdir = args.logdir
+    data_path = args.data_path
     print("Save checkpoints and logs in: ", logdir)
     args = json.load(open(config))
 
@@ -146,7 +148,7 @@ def main():
 
     # dataset
     if args["train_set"] == "shapenetcore55":
-        dataset = ShapeNetCore55XyzOnlyDataset(args["train_root"], num_points=args["num_points"], phase="train")
+        dataset = ShapeNetCore55XyzOnlyDataset(data_path, num_points=args["num_points"], phase="train")
 
     else:
         raise Exception("Unknown dataset")
