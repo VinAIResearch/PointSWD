@@ -67,8 +67,8 @@ make
 ```
 ## Experiments
 ### Autoencoder
-To train an autoencoder: <br> 
-In the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run:
+To train an autoencoder: 
+<!-- In the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run: -->
 ```
 bash train.sh
 ```
