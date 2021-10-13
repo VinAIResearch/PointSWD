@@ -15,9 +15,7 @@ In this paper, we conduct a systematic study with extensive experiments on dista
 
 | ![teaser.png](./image/teaser.png) |
 |:--:|
-| *In this example, we try to morph a sphere into a chair by optimizing two different loss functions:
-  Chamfer discrepancy (top, red) and sliced Wasserstein distance (bottom, blue).
-  The sliced Wasserstein distance only takes 1000 iterations to converge, while it takes 50000 iterations for Chamfer discrepancy.*|
+| *In this example, we try to morph a sphere into a chair by optimizing two different loss functions: Chamfer discrepancy (top, red) and sliced Wasserstein distance (bottom, blue). The sliced Wasserstein distance only takes 1000 iterations to converge, while it takes 50000 iterations for Chamfer discrepancy.*|
 
 Details of the model architecture and experimental results can be found in [our following paper](https://arxiv.org/abs/2102.04014).
 
