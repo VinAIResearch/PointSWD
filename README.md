@@ -8,7 +8,7 @@
 
 
 # Point-set Distances for Learning Representations of 3D Point Clouds
-This repository contains the implementation of our [paper](https://arxiv.org/abs/2102.04014). In particular, we release code for training a point cloud autoencoder network with different point-set distances and testing the autoencoder for classification, reconstruction, registration and generation. 
+This repository contains the implementation of our [paper](https://arxiv.org/abs/2102.04014). In particular, we release code for training a point cloud autoencoder network with different point-set distances, such as, sliced Wasserstein distance (SWD), Chamfer, ... and testing the autoencoder for classification, reconstruction, registration, and generation. 
 
 | ![teaser.png](./image/teaser.png) |
 |:--:|
@@ -69,7 +69,9 @@ To train an autoencoder:
 ```
 python train.py --config="config.json" \
                 --logdir="logs/" \
-                --data_path="dataset/shapenet_core55/shapenet57448xyzonly.npz"
+                --data_path="dataset/shapenet_core55/shapenet57448xyzonly.npz" \
+                --loss="swd" \
+                --autoencoder="pointnet"
 
 # or in short, you can run
 bash train.sh
@@ -182,7 +184,7 @@ python generation/preprocess.py  --config='generation/preprocess_test.json' \
                                  --logdir="logs/" \
                                  --data_path="dataset/shapenet_chair/test.npz"
 
-# Or in short, you can run
+# or in short, you can run
 bash generation/preprocess.sh
 ```
 To train the generator:
@@ -197,7 +199,7 @@ To test the generator:
 ```
 python generation/test_generation.py  --config='generation/test_generation_config.json' \
                                       --logdir="logs/"
-                                      
+
 # or in short, you can run
 bash generation/test_generation.sh
 ```

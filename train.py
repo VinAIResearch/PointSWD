@@ -38,12 +38,18 @@ def main():
     parser.add_argument("--config", help="path to json config file")
     parser.add_argument("--logdir", help="path to the log directory")
     parser.add_argument("--data_path", help="path to data")
+    parser.add_argument("--loss", default="swd", help="[swd, emd, chamfer, asw, msw, gsw]")
+    parser.add_argument("--autoencoder", default="pointnet", help="[pointnet, pcn]")
     args = parser.parse_args()
     config = args.config
     logdir = args.logdir
     data_path = args.data_path
+    loss_type = args.loss
+    ae_type = args.autoencoder
     print("Save checkpoints and logs in: ", logdir)
     args = json.load(open(config))
+    args["autoencoder"] = ae_type
+    args["loss"] = loss_type
 
     # set seed
     torch.manual_seed(args["seed"])
