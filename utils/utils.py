@@ -50,7 +50,7 @@ def initialize_main(**kwargs):
     print("You have 5s to check the hyperparameters below.")
     print(args)
     time.sleep(5)
-    if data_path==None:
+    if data_path is None:
         return args, logdir
     else:
         return args, logdir, data_path

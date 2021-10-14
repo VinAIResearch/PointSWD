@@ -26,10 +26,8 @@ import sys
 
 import matplotlib.pyplot as plt
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 import torch.utils.data as data
-from scipy.stats import norm
 from torch.autograd import Variable
 from tqdm import tqdm
 
@@ -289,7 +287,6 @@ class MLP(nn.Module):
 class MLPGenerator(nn.Module):
     def __init__(self, latent_dim, n_hidden, hidden_size, data_dim):
         super().__init__()
-        layers = []
         self.latent_dim = latent_dim
         self.mlp = MLP(latent_dim, n_hidden, hidden_size, data_dim)
 
@@ -344,7 +341,7 @@ def q1_b(train_data):  # train OT
 
 
 def save_results(part, fn, save_folder):
-    npz_latent_codes_path = osp.join(save_folder, "latent_codes.npz")  ##path to npz file
+    npz_latent_codes_path = osp.join(save_folder, "latent_codes.npz")  # path to npz file
     data = np.load(npz_latent_codes_path)["data"]
     result_dict = fn(data)
     losses = result_dict["g_losses"]
