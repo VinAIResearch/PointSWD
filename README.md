@@ -64,8 +64,23 @@ make
 ```
 ## Experiments
 ### Autoencoder
-To train an autoencoder: 
+<!-- To train an autoencoder:  -->
 <!-- In the file `config.json`, set `loss` to be one of [`swd`, `emd`, `chamfer`, `asw`, `msw`, `gsw`] and set `autoencoder` to be one of [`pointnet`, `pcn`], then run: -->
+Available arguments for training an autoencoder:
+```
+train.py [-h] [--config CONFIG] [--logdir LOGDIR]
+                [--data_path DATA_PATH] [--loss LOSS]
+                [--autoencoder AUTOENCODER]
+
+optional arguments:
+  -h, --help                  show this help message and exit
+  --config CONFIG             path to json config file
+  --logdir LOGDIR             path to the log directory
+  --data_path DATA_PATH       path to data for training
+  --loss LOSS                 loss function. One of [swd, emd, chamfer, asw, msw, gsw]
+  --autoencoder AUTOENCODER   model name. One of [pointnet, pcn]
+```
+Example:
 ```
 python train.py --config="config.json" \
                 --logdir="logs/" \
